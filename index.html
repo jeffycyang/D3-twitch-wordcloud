@@ -4,6 +4,7 @@
   <title>Twitch Bitch</title>
   <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
   <script src="build/d3.layout.cloud.js"></script>
+  <script src="data.js"></script>
 </head>
 <style>
     body {
@@ -65,8 +66,8 @@ var fill = d3.scale.category20();
 
 var layout = d3.layout.cloud()
     .size([2000, 1000])
-    .words(["League of Legends", "Dota 2", "Hearthstone: Heroes of Warcraft", "H1Z1", "Counter-Strike: Global Offensive", "Dark Souls", "Destiny", "Resident Evil: Code: Veronica X", "Keep Talking and Nobody Explodes", "Big Pharma", "Minecraft", "The Binding of Isaac: Rebirth", "FIFA 16", "Life Is Strange", "Creative", "ArmA III", "World of Warcraft", "StarCraft II", "Heroes of the Storm", "Diablo III: Reaper of Souls", "Call of Duty: Black Ops II", "Poker", "Smite", "ARK: Survival Evolved", "Call of Duty: Advanced Warfare", "Rocket League", "Grand Theft Auto V", "Blade and Soul", "NBA 2K16", "Super Mario Maker", "Undertale", "Gaming Talk Shows", "RuneScape", "World of Tanks", "Music", "Super Smash Bros. Melee", "Battlefield 4", "DayZ", "Guild Wars 2", "Assassin's Creed Syndicate", "Fallout 2", "Pokémon Omega Ruby/Alpha Sapphire", "Pokémon Black/White Version 2", "Madden NFL 16", "Magic: The Gathering", "Halo: The Master Chief Collection", "Tales of Zestiria", "Fallout: New Vegas", "The Legend of Zelda: Ocarina of Time", "Metal Gear Solid V: The Phantom Pain"].map(function(d) {
-      return {text: d, size: Math.random() * 50};
+    .words(dataArray.map(function(d) {
+      return d;
     }))
     .padding(5)
     .rotate(function() { return ~~(Math.random() * 2) * 35; })

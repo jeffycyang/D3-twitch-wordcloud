@@ -1,4 +1,4 @@
-var window.data = {
+var data = {
     "_total": 1103,
     "_links": {
         "self": "https://api.twitch.tv/kraken/games/top?limit=10&offset=0",
@@ -232,22 +232,13 @@ var window.data = {
     //gives number of viewers
 //data.top[0].game.name
     //gives game name
-var window.dataArray = [];
+var dataArray = [];
 for(var i=0;i<data.top.length;i++){
     dataArray[i]={
-        name:data.top[i].game.name,
-        viewers:data.top[i].viewers
+        text:data.top[i].game.name,
+        size:data.top[i].viewers/1000
     }
 }
-var nameArray=[];
-for(var i=0;i<dataArray.length;i++){
-    nameArray[i]=dataArray[i].name;
-}
-var viewersArray=[];
-for(var i=0;i<dataArray.length;i++){
-    viewersArray[i]=dataArray[i].viewers;
-}
-
 
 
 
