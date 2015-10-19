@@ -21,49 +21,79 @@
     }
 </style>
 <body>
-
 </body>
 <script>
+//old code you motherfukers
+    // var frequency_list = [{name:"League of Legends",viewers:70}, {name:"Counter-Strike: Global Offensive",viewers:61}, {name:"Hearthstone: Heroes of Warcraft",viewers:53}, {name:"ArmA III",viewers:51}, {name:"H1Z1",viewers:47}, {name:"Dota 2",viewers:44}, {name:"Destiny",viewers:33}, {name:"FIFA 16",viewers:27}, {name:"Blade and Soul",viewers:16}, {name:"Gaming Talk Shows",viewers:5}];
 
-    var frequency_list = [{name:"League of Legends",viewers:70}, {name:"Counter-Strike: Global Offensive",viewers:61}, {name:"Hearthstone: Heroes of Warcraft",viewers:53}, {name:"ArmA III",viewers:51}, {name:"H1Z1",viewers:47}, {name:"Dota 2",viewers:44}, {name:"Destiny",viewers:33}, {name:"FIFA 16",viewers:27}, {name:"Blade and Soul",viewers:16}, {name:"Gaming Talk Shows",viewers:5}];
 
+    // var color = d3.scale.linear()
+    //         .domain([0,1,2,3,4,5,6,10,15,20,100])
+    //         .range(["#ddd", "#ccc", "#bbb", "#aaa", "#999", "#888", "#777", "#666", "#555", "#444", "#333", "#222"]);
 
-    var color = d3.scale.linear()
-            .domain([0,1,2,3,4,5,6,10,15,20,100])
-            .range(["#ddd", "#ccc", "#bbb", "#aaa", "#999", "#888", "#777", "#666", "#555", "#444", "#333", "#222"]);
+    // d3.layout.cloud().size([800, 300])
+    //         .words(frequency_list)
+    //         .rotate(0)
+    //         .fontSize(function(d) { return d.viewers; })
+    //         .on("end", draw)
+    //         .start();
 
-    d3.layout.cloud().size([800, 300])
-            .words(frequency_list)
-            .rotate(0)
-            .fontSize(function(d) { return d.viewers; })
-            .on("end", draw)
-            .start();
+    // function draw(words) {
+    //     d3.select("body").append("svg")
+    //             .attr("width", 850)
+    //             .attr("height", 350)
+    //             .attr("class", "wordcloud")
+    //             .append("g")
+    //             // without the transform, words words would get cutoff to the left and top, they would
+    //             // appear outside of the SVG area
+    //             .attr("transform", "translate(320,200)")
+    //             .selectAll("text")
+    //             .data(words)
+    //             .enter().append("text")
+    //             .style("font-size", function(d) { return d.viewers + "px"; })
+    //             .style("fill", function(d, i) { return color(i); })
+    //             .attr("transform", function(d) {
+    //                 return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+    //             })
+    //             .text(function(d) { return d.name; });
+    // }
 
-    function draw(words) {
-        d3.select("body").append("svg")
-                .attr("width", 850)
-                .attr("height", 350)
-                .attr("class", "wordcloud")
-                .append("g")
-                // without the transform, words words would get cutoff to the left and top, they would
-                // appear outside of the SVG area
-                .attr("transform", "translate(320,200)")
-                .selectAll("text")
-                .data(words)
-                .enter().append("text")
-                .style("font-size", function(d) { return d.viewers + "px"; })
-                .style("fill", function(d, i) { return color(i); })
-                .attr("transform", function(d) {
-                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-                })
-                .text(function(d) { return d.name; });
-    }
+// var d3 = require("d3"),
+  //cloud = require("build");
+
+var fill = d3.scale.category20();
+
+var layout = d3.layout.cloud()
+    .size([2000, 1000])
+    .words(["League of Legends", "Dota 2", "Hearthstone: Heroes of Warcraft", "H1Z1", "Counter-Strike: Global Offensive", "Dark Souls", "Destiny", "Resident Evil: Code: Veronica X", "Keep Talking and Nobody Explodes", "Big Pharma", "Minecraft", "The Binding of Isaac: Rebirth", "FIFA 16", "Life Is Strange", "Creative", "ArmA III", "World of Warcraft", "StarCraft II", "Heroes of the Storm", "Diablo III: Reaper of Souls", "Call of Duty: Black Ops II", "Poker", "Smite", "ARK: Survival Evolved", "Call of Duty: Advanced Warfare", "Rocket League", "Grand Theft Auto V", "Blade and Soul", "NBA 2K16", "Super Mario Maker", "Undertale", "Gaming Talk Shows", "RuneScape", "World of Tanks", "Music", "Super Smash Bros. Melee", "Battlefield 4", "DayZ", "Guild Wars 2", "Assassin's Creed Syndicate", "Fallout 2", "Pokémon Omega Ruby/Alpha Sapphire", "Pokémon Black/White Version 2", "Madden NFL 16", "Magic: The Gathering", "Halo: The Master Chief Collection", "Tales of Zestiria", "Fallout: New Vegas", "The Legend of Zelda: Ocarina of Time", "Metal Gear Solid V: The Phantom Pain"].map(function(d) {
+      return {text: d, size: Math.random() * 50};
+    }))
+    .padding(5)
+    .rotate(function() { return ~~(Math.random() * 2) * 35; })
+    .font("Impact")
+    .fontSize(function(d) { return d.size; })
+    .on("end", draw);
+
+layout.start();
+
+function draw(words) {
+  d3.select("body").append("svg")
+      .attr("width", layout.size()[0])
+      .attr("height", layout.size()[1])
+    .append("g")
+      .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+    .selectAll("text")
+      .data(words)
+    .enter().append("text")
+      .style("font-size", function(d) { return d.size + "px"; })
+      .style("font-family", "Impact")
+      .style("fill", function(d, i) { return fill(i); })
+      .attr("text-anchor", "middle")
+      .attr("transform", function(d) {
+        return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+      })
+      .text(function(d) { return d.text; });
+}
+
 </script>
-
-<!-- <div style="width: 40%;">
-    <div class="legend">
-        Commonly used words are larger and slightly faded in color.  Less common words are smaller and darker.
-    </div>
-</div>
- -->
 </html>
