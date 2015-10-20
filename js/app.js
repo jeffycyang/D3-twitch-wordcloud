@@ -16,8 +16,6 @@ var app = {
       // data: JSON.stringify(message),
       contentType: 'application/json',
       success: function (data) {
-        // app.clearMessages();
-        // app.displayMessage(data);
         app.setData(data);
         console.log('chatterbox received: ' + data);
       },
@@ -29,22 +27,19 @@ var app = {
   },
 
   setData: function(data) {
-    // var dataArray = [];
-    // debugger;
     for(var i=0;i<data.top.length;i++){
-      // if(data.top[i].viewers<4000){
-      //   app.dataArray[i]={
-      //     text:data.top[i].game.name,
-      //     size:200
-      //   }
-      // }else{
+      if(data.top[i].viewers<2000){
+        app.dataArray[i]={
+          text:data.top[i].game.name,
+          size:30
+        }
+      }else{
         app.dataArray[i]={
           text:data.top[i].game.name,
           size:data.top[i].viewers/500
         }
-      // }
+      }
     }
-    debugger;
     var fill = d3.scale.category20();
 
     var layout = d3.layout.cloud()
