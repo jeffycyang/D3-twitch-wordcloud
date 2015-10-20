@@ -36,7 +36,7 @@ var app = {
       }else{
         app.dataArray[i]={
           text:data.top[i].game.name,
-          size:data.top[i].viewers/500
+          size:data.top[i].viewers/700<30?30:data.top[i].viewers/700
         }
       }
     }
@@ -74,8 +74,16 @@ var app = {
           .text(function(d) { return d.text; });
     }
 
+    // $('svg text').mouseenter(function() {
+    //   $(this).effect("bounce", { times: 1 }, "slow");
+    // });
+
   }
 
 };
 
 app.init();
+
+
+
+

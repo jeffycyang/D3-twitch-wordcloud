@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Twitch Bitch</title>
+  <title>Twitch Word Cloud</title>
   <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
   <script src="build/d3.layout.cloud.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="data.js"></script>
 </head>
 <style>
+    h1 {
+      font-family: "Comic-Sans";
+      font-size: 60px;
+      font-weight: bold;
+      text-align: center;
+    }
     body {
         font-family:"Lucida Grande","Droid Sans",Arial,Helvetica,sans-serif;
+
+
+
+  background: -webkit-linear-gradient(90deg, #C9FFBF 10%, #FFAFBD 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #C9FFBF 10%, #FFAFBD 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #C9FFBF 10%, #FFAFBD 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #C9FFBF 10%, #FFAFBD 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #C9FFBF 10%, #FFAFBD 90%); /* W3C */
+
+
+
     }
     .legend {
         border: 1px solid #555555;
@@ -21,8 +38,15 @@
     .bld {
         font-weight: bold;
     }
+    svg {
+      margin: auto;
+      display: block;
+    }
+
+
 </style>
 <body>
+  <h1><img src="twitch_cloud_logo.png"></h1>
 </body>
 <script src="js/app.js"></script>
 </html>
