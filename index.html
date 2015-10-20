@@ -4,6 +4,7 @@
   <title>Twitch Bitch</title>
   <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
   <script src="build/d3.layout.cloud.js"></script>
+  <script src="js/jquery.min.js"></script>
   <script src="data.js"></script>
 </head>
 <style>
@@ -23,78 +24,42 @@
 </style>
 <body>
 </body>
-<script>
-//old code you motherfukers
-    // var frequency_list = [{name:"League of Legends",viewers:70}, {name:"Counter-Strike: Global Offensive",viewers:61}, {name:"Hearthstone: Heroes of Warcraft",viewers:53}, {name:"ArmA III",viewers:51}, {name:"H1Z1",viewers:47}, {name:"Dota 2",viewers:44}, {name:"Destiny",viewers:33}, {name:"FIFA 16",viewers:27}, {name:"Blade and Soul",viewers:16}, {name:"Gaming Talk Shows",viewers:5}];
+<script src="js/app.js"></script>
+<!--<script>
 
+// var fill = d3.scale.category20();
 
-    // var color = d3.scale.linear()
-    //         .domain([0,1,2,3,4,5,6,10,15,20,100])
-    //         .range(["#ddd", "#ccc", "#bbb", "#aaa", "#999", "#888", "#777", "#666", "#555", "#444", "#333", "#222"]);
+// var layout = d3.layout.cloud()
+//     .size([2000, 1000])
+//     .words(dataArray.map(function(d) {
+//       return d;
+//     }))
+//     .padding(5)
+//     .rotate(function() { return ~~(Math.random() * 2) * 35; })
+//     .font("Impact")
+//     .fontSize(function(d) { return d.size; })
+//     .on("end", draw);
 
-    // d3.layout.cloud().size([800, 300])
-    //         .words(frequency_list)
-    //         .rotate(0)
-    //         .fontSize(function(d) { return d.viewers; })
-    //         .on("end", draw)
-    //         .start();
+// layout.start();
 
-    // function draw(words) {
-    //     d3.select("body").append("svg")
-    //             .attr("width", 850)
-    //             .attr("height", 350)
-    //             .attr("class", "wordcloud")
-    //             .append("g")
-    //             // without the transform, words words would get cutoff to the left and top, they would
-    //             // appear outside of the SVG area
-    //             .attr("transform", "translate(320,200)")
-    //             .selectAll("text")
-    //             .data(words)
-    //             .enter().append("text")
-    //             .style("font-size", function(d) { return d.viewers + "px"; })
-    //             .style("fill", function(d, i) { return color(i); })
-    //             .attr("transform", function(d) {
-    //                 return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-    //             })
-    //             .text(function(d) { return d.name; });
-    // }
+// function draw(words) {
+//   d3.select("body").append("svg")
+//       .attr("width", layout.size()[0])
+//       .attr("height", layout.size()[1])
+//     .append("g")
+//       .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+//     .selectAll("text")
+//       .data(words)
+//     .enter().append("text")
+//       .style("font-size", function(d) { return d.size + "px"; })
+//       .style("font-family", "Impact")
+//       .style("fill", function(d, i) { return fill(i); })
+//       .attr("text-anchor", "middle")
+//       .attr("transform", function(d) {
+//         return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+//       })
+//       .text(function(d) { return d.text; });
+// }
 
-// var d3 = require("d3"),
-  //cloud = require("build");
-
-var fill = d3.scale.category20();
-
-var layout = d3.layout.cloud()
-    .size([2000, 1000])
-    .words(dataArray.map(function(d) {
-      return d;
-    }))
-    .padding(5)
-    .rotate(function() { return ~~(Math.random() * 2) * 35; })
-    .font("Impact")
-    .fontSize(function(d) { return d.size; })
-    .on("end", draw);
-
-layout.start();
-
-function draw(words) {
-  d3.select("body").append("svg")
-      .attr("width", layout.size()[0])
-      .attr("height", layout.size()[1])
-    .append("g")
-      .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
-    .selectAll("text")
-      .data(words)
-    .enter().append("text")
-      .style("font-size", function(d) { return d.size + "px"; })
-      .style("font-family", "Impact")
-      .style("fill", function(d, i) { return fill(i); })
-      .attr("text-anchor", "middle")
-      .attr("transform", function(d) {
-        return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-      })
-      .text(function(d) { return d.text; });
-}
-
-</script>
+</script>-->
 </html>
