@@ -1,5 +1,3 @@
-// YOUR CODE HERE:
-
 var app = {
 
   dataArray: [],
@@ -74,9 +72,12 @@ var app = {
           .text(function(d) { return d.text; });
     }
 
-    // $('svg text').mouseenter(function() {
-    //   $(this).effect("bounce", { times: 1 }, "slow");
-    // });
+    $('svg text')
+      .hide()
+      .each(function(index){
+        var _this = this;
+        setTimeout( function(){ $(_this).fadeIn(); }, 50*index );
+      });
 
   }
 
